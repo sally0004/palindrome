@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Palindrome Checker</h1>
+        <input type="text" id="inputText" placeholder="Enter a number">
+        <button onclick="checkPalindrome()">Check</button>
+        <p class="result" id="resultText"></p>
+    </div>
+
+    <script>
+        function checkPalindrome() {
+            let inputText = document.getElementById('inputText').value;
+            let cleanedText = inputText.toLowerCase().replace(/[^a-z0-9]/g, '');
+            let reversedText = cleanedText.split('').reverse().join('');
+            
+            if (cleanedText === reversedText && inputText.length > 0) {
+                document.getElementById('resultText').innerHTML = `"${inputText}" is a palindrome!`;
+                document.getElementById('resultText').style.color = "green";
+            } else {
+                document.getElementById('resultText').innerHTML = `"${inputText}" is not a palindrome.`;
+                document.getElementById('resultText').style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
